@@ -21,8 +21,6 @@ import '@tsed/swagger'
 export class Server extends ServerLoader {
   public $onMountingMiddlewares (): void | Promise<any> {
     this.use(bodyParser.json())
-
-    return null
   }
 
   public $onReady () {

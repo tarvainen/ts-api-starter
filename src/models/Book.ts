@@ -3,9 +3,9 @@ import { Example } from '@tsed/swagger'
 
 export class Book {
   @Example(12)
-  id: number
+  id: number = 0
 
   @Required()
   @Example('My Book')
-  title: string
+  title: string = ''
 }

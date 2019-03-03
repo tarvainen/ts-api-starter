@@ -2,14 +2,25 @@
 
 This starter includes
 
+- [x] Clear project structure
+- [x] Automated API documentation
+- [x] DependencyInjection
+- [x] Validation
+- [x] Linting
 - [ ] Logging
-- [ ] DependencyInjection
-- [ ] Validation
 - [ ] Rate limits
-- [ ] Automated API documentation
 - [ ] Automation tests
-- [ ] Clear project structure
 - [ ] Admin dashboard
+
+## Usage
+
+```
+# Start development server at localhost:8080
+npm start
+
+# Lint
+npm run lint
+```
 
 # License
 

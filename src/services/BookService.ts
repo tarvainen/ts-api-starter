@@ -2,12 +2,12 @@ import { Service } from '@tsed/di'
 import { Book } from '../models/Book'
 
 // Dummy storage
-const collection = []
+const collection: Array<Book> = []
 
 @Service()
 export class BookService {
-  public get (id: number): Book {
-    return collection.find(p => p.id === id)
+  public get (id: number): Book | undefined {
+    return collection.find((book: Book) => book.id === id)
   }
 
   public set (book: Book): Book {
