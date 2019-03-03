@@ -7,10 +7,9 @@ This starter includes
 - [x] DependencyInjection
 - [x] Validation
 - [x] Linting
-- [ ] Logging
+- [x] Logging
+- [ ] Pagination
 - [ ] Rate limits
-- [ ] Automation tests
-- [ ] Admin dashboard
 
 ## Usage
 

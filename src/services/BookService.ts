@@ -1,19 +1,29 @@
 import { Service } from '@tsed/di'
-import { Book } from '../models/Book'
-
-// Dummy storage
-const collection: Array<Book> = []
+import { Book } from '../entity/Book'
+import { TypeORMService } from '@tsed/typeorm'
+import { AfterRoutesInit } from '@tsed/common'
+import { Connection } from 'typeorm'
 
 @Service()
-export class BookService {
-  public get (id: number): Book | undefined {
-    return collection.find((book: Book) => book.id === id)
+export class BookService implements AfterRoutesInit {
+  private connection: Connection = {} as Connection
+
+  constructor (private orm: TypeORMService) { }
+
+  $afterRoutesInit () {
+    this.connection = this.orm.get('default') as Connection
   }
 
-  public set (book: Book): Book {
-    book.id = collection.length + 1
+  async get (id: number): Promise<Book | undefined> {
+    return this.connection.manager.findOne<Book>(Book, id)
+  }
 
-    collection.push(book)
+  async find (): Promise<Book[]> {
+    return this.connection.manager.find<Book>(Book)
+  }
+
+  async set (book: Book): Promise<Book> {
+    await this.connection.manager.save(book)
 
     return book
   }
