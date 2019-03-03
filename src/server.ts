@@ -1,10 +1,10 @@
-import { ServerLoader, ServerSettings } from '@tsed/common';
-import Path = require('path');
-import bodyParser = require('body-parser');
-import GlobalErrorHandlerMiddleware from './middlewares/GlobalErrorHandlerMiddleware';
-import '@tsed/ajv';
-import '@tsed/swagger';
- 
+import { ServerLoader, ServerSettings } from '@tsed/common'
+import Path = require('path')
+import bodyParser = require('body-parser')
+import GlobalErrorHandlerMiddleware from './middlewares/GlobalErrorHandlerMiddleware'
+import '@tsed/ajv'
+import '@tsed/swagger'
+
 @ServerSettings({
   rootDir: Path.resolve(__dirname),
   acceptMimes: ['application/json'],
@@ -19,23 +19,26 @@ import '@tsed/swagger';
   ]
 })
 export class Server extends ServerLoader {
-  public $onMountingMiddlewares(): void|Promise<any> { 
-    this.use(bodyParser.json());
+  public $onMountingMiddlewares (): void | Promise<any> {
+    this.use(bodyParser.json())
 
-    return null;
+    return null
   }
 
-  public $onReady() {
-    console.log('Server started...');
+  public $onReady () {
+    console.log('Server started...')
   }
 
-  public $afterRoutesInit() {
-    this.use(GlobalErrorHandlerMiddleware);
+  public $afterRoutesInit () {
+    this.use(GlobalErrorHandlerMiddleware)
   }
-  
-  public $onServerInitError(err: string) {
-    console.error(err);
+
+  public $onServerInitError (err: string) {
+    console.error(err)
   }
 }
- 
-new Server().start();
+
+new Server().start()
+  .catch((reason: any) => {
+    console.error(reason)
+  })
