@@ -1,8 +1,9 @@
 import { ServerLoader, ServerSettings } from '@tsed/common';
 import Path = require('path');
 import bodyParser = require('body-parser');
-import '@tsed/ajv';
 import GlobalErrorHandlerMiddleware from './middlewares/GlobalErrorHandlerMiddleware';
+import '@tsed/ajv';
+import '@tsed/swagger';
  
 @ServerSettings({
   rootDir: Path.resolve(__dirname),
@@ -10,7 +11,12 @@ import GlobalErrorHandlerMiddleware from './middlewares/GlobalErrorHandlerMiddle
   ajv: {
     errorFormat: (error: any) => `${error.modelName}${error.dataPath} ${error.message}`,
     options: { verbose: true }
-  }
+  },
+  swagger: [
+    {
+      path: '/api/doc'
+    }
+  ]
 })
 export class Server extends ServerLoader {
   public $onMountingMiddlewares(): void|Promise<any> { 

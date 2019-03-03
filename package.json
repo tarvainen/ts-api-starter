@@ -15,7 +15,9 @@
     "@tsed/common": "^5.2.2",
     "@tsed/core": "^5.2.2",
     "@tsed/di": "^5.2.2",
+    "@tsed/swagger": "^5.2.2",
     "@types/express": "^4.16.1",
+    "@types/swagger-schema-official": "^2.0.15",
     "ajv": "^6.9.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
