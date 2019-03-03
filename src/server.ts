@@ -37,7 +37,7 @@ import '@tsed/typeorm'
       subscribers: [
         `${__dirname}/subscriber/*{.ts,.js}`
       ]
-    },
+    }
   ]
 })
 export class Server extends ServerLoader {
