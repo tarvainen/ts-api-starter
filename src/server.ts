@@ -8,7 +8,7 @@ import GlobalErrorHandlerMiddleware from './middlewares/GlobalErrorHandlerMiddle
   rootDir: Path.resolve(__dirname),
   acceptMimes: ['application/json'],
   ajv: {
-    errorFormat: (error: any) => `At ${error.modelName}${error.dataPath}, value '${error.data}' ${error.message}`,
+    errorFormat: (error: any) => `${error.modelName}${error.dataPath} ${error.message}`,
     options: { verbose: true }
   }
 })
