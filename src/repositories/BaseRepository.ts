@@ -1,7 +1,8 @@
 import { TypeORMService } from '@tsed/typeorm'
 import { AfterRoutesInit } from '@tsed/common'
-import { Connection } from 'typeorm'
+import { Connection, DeleteResult } from 'typeorm'
 import { PaginationResult } from '../model/PaginationResult'
+import { DeletionResult } from '../model/DeletionResult'
 
 export abstract class BaseRepository<T> implements AfterRoutesInit {
   protected connection: Connection = {} as Connection
@@ -23,6 +24,12 @@ export abstract class BaseRepository<T> implements AfterRoutesInit {
 
   async find (): Promise<[T[], number]> {
     return this.connection.manager.findAndCount<T>(this.className)
+  }
+
+  async delete (criteria: any): Promise<DeletionResult> {
+    const result = await this.connection.manager.delete(this.className, criteria)
+
+    return { deletedCount: parseInt(result.affected + '', 10) }
   }
 
   async findPaged (page: number = 1): Promise<PaginationResult<T>> {

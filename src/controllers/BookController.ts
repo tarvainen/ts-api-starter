@@ -1,4 +1,4 @@
-import { Controller, Get, BodyParams, Post, Required } from '@tsed/common'
+import { Controller, Get, BodyParams, Post, Required, Delete } from '@tsed/common'
 import * as Express from 'express'
 import { Book } from '../entity/Book'
 import { BookService } from '../services/BookService'
@@ -15,6 +15,11 @@ export class BookController {
   @Get('/')
   async find (request: Express.Request, response: Express.Response) {
     return this.bookService.findPaged(+request.query.page || 1)
+  }
+
+  @Delete('/:id')
+  async delete (request: Express.Request, response: Express.Response) {
+    return this.bookService.delete(+request.params.id)
   }
 
   @Post('/')
