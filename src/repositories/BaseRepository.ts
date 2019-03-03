@@ -1,7 +1,7 @@
 import { TypeORMService } from '@tsed/typeorm'
 import { AfterRoutesInit } from '@tsed/common'
 import { Connection } from 'typeorm'
-import { PaginationResult } from '../model/PaginationResult';
+import { PaginationResult } from '../model/PaginationResult'
 
 export abstract class BaseRepository<T> implements AfterRoutesInit {
   protected connection: Connection = {} as Connection

@@ -8,7 +8,7 @@ This starter includes
 - [x] Validation
 - [x] Linting
 - [x] Logging
-- [ ] Pagination
+- [x] Pagination
 - [ ] Rate limits
 
 ## Usage
