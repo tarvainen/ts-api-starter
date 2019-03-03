@@ -14,7 +14,7 @@ export class BookController {
 
   @Get('/')
   async find (request: Express.Request, response: Express.Response) {
-    return this.bookService.find()
+    return this.bookService.findPaged(+request.query.page || 1)
   }
 
   @Post('/')
