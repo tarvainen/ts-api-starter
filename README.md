@@ -1,5 +1,7 @@
 # TypeScript REST API starter
 
+[![Build Status](https://travis-ci.org/tarvainen/ts-api-starter.svg?branch=master)](https://travis-ci.org/tarvainen/ts-api-starter)
+
 This starter includes
 
 - [x] Clear project structure
